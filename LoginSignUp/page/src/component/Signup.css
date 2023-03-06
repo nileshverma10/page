@@ -1,0 +1,69 @@
+*{
+    background-color: rosybrown;
+}
+.email{
+    width: 350px;
+    height: 40px;
+    margin-top: 8px;
+  }
+  .email:focus {
+    outline: none;
+  }
+  input, select, textarea {
+    font-size: 150%;
+    padding-left: 8px;
+
+    }
+    .input{
+        outline: 8px black;
+    }
+
+    .finput{
+    width: 350px;
+    height: 40px;
+    margin-top: 8px;
+    }
+    
+.finput:focus {
+    outline: none;
+  }
+  .linput{
+    width: 350px;
+    height: 40px;
+    margin-top: 8px;
+  }
+  .linput:focus {
+    outline: none;
+  }
+  .pass{
+    width: 350px;
+    height: 40px;
+    margin-top: 8px;
+  }
+  .pass:focus {
+    outline: none;
+  }
+
+  input {
+    border: 2px solid tomato;
+  }
+  .btn{
+    margin-top: 20px;
+    padding: 8px 40px ;
+    font-size: 150%;
+    border-radius: 30px;
+    border: 2px solid tomato;
+    background-color: skyblue;
+  }
+  .genselect{
+    width: 350px;
+    height: 40px;
+    margin-top: 8px;
+}
+.genselect:focus {
+    outline: none;
+  }
+  .genselect  {
+   
+    border: 2px solid tomato;
+  }

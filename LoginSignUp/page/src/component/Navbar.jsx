@@ -12,32 +12,36 @@ const Navbar = () => {
 
   return (
     <div className="nav-div ">
-      <ul>
-        <li>
-          <Link to="/">Home </Link>
-        </li>
-        <li>
-          <Link to="/about"> About</Link>
-        </li>
-        <li>
-          <Link to="/contact"> Contact</Link>
-        </li>
-        <li>
-          <Link to="/blog"> Blog </Link>
-        </li>
-        <li>
-          <Link to="/login">Login</Link>
-        </li>
-        <li>
-          {auth ? (
+      {auth ? (
+        <ul>
+          <li>
+            <Link to="/">Home </Link>
+          </li>
+          <li>
+            <Link to="/about"> About</Link>
+          </li>
+          <li>
+            <Link to="/contact"> Contact</Link>
+          </li>
+          <li>
+            <Link to="/blog"> Blog </Link>
+          </li>
+          <li>
             <Link onClick={logout} to="/signup">
-              Logout
+              Logout({JSON.parse(auth).email})
             </Link>
-          ) : (
+          </li>
+        </ul>
+      ) : (
+        <ul className="nav-ul">
+          <li>
             <Link to="/signup">Sign Up</Link>
-          )}
-        </li>
-      </ul>
+          </li>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+        </ul>
+      )}
     </div>
   );
 };

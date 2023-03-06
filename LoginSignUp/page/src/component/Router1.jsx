@@ -20,10 +20,10 @@ const Router1 = () => {
           <Route exact path="/about" element={<About />} />
           <Route exact path="/contact" element={<Contact />} />
           <Route exact path="/blog" element={<Blog />} />
-          <Route exact path="/login" element={<Login />} />
           <Route exact path="/logout" element={<Logout />} />
         </Route>
         <Route exact path="/signup" element={<SignUp />} />
+        <Route exact path="/login" element={<Login />} />
       </Routes>
     </div>
   );

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "./Signup.css";
 
 function SignUp() {
   const [email, setEmail] = useState("");
@@ -178,7 +179,7 @@ function SignUp() {
       />
       <br />
       <button className="btn" onClick={handleApi}>
-        Login
+        SignUp
       </button>
     </div>
   );

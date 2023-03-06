@@ -4,7 +4,6 @@ const router = require("./routes/main");
 const port = 5000;
 const bodyParser = require("body-parser");
 var cors = require("cors");
-const detailsModel = require("./model/main");
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -25,18 +24,18 @@ mongoose
     console.log(err);
   });
 
-app.post("/login", async (req, res) => {
-  if (req.body.email && req.body.password) {
-    let user = await detailsModel.findOne(req.body).select("-password");
-    if (user) {
-      res.send(user);
-    } else {
-      res.status(401).send("Invalid Credentials");
-    }
-  } else {
-    res.status(401).send("Invalid Credentials");
-  }
-});
+// app.post("/login", async (req, res) => {
+//   if (req.body.email && req.body.password) {
+//     let user = await detailsModel.findOne(req.body).select("-password");
+//     if (user) {
+//       res.send(user);
+//     } else {
+//       res.status(401).send("Invalid Credentials");
+//     }
+//   } else {
+//     res.status(401).send("Invalid Credentials");
+//   }
+// });
 
 app.listen(port, () => {
   console.log(`server running on port ${port}`);

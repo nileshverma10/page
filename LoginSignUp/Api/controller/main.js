@@ -14,6 +14,8 @@ const addData = async (req, res) => {
     });
 
     await data.save();
+    // data = data.toObject();
+    // delete data.password;
     if (!data) {
       res.status(404).json({
         message: "Data not added",
@@ -66,9 +68,62 @@ const patchData = async (req, res) => {
     res.send("something went wrong");
   }
 };
+
+// const login = async (req, res) => {
+//   try {
+//     const { email, password } = req.body;
+
+//     const data = new detailsModel({
+//       email: email,
+//       password: password,
+//     });
+//     await data.save();
+//   } catch (error) {
+//     console.log("error===>", error);
+//     res.send("something went wrong");
+//   }
+// };
+
+const login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const data = new detailsModel({
+      email: email,
+      password: password,
+    });
+
+    await data.save();
+    // if (req.body.email && req.body.password) {
+    //   let user = await detailsModel.findOne(req.body).select("-password");
+    //   if (user) {
+    //     res.send(user);
+    //   } else {
+    //     res.status(401).json({ message: "Invalid Credentials" });
+    //   }
+    // } else {
+    //   res.status(401).json({ message: "Invalid Credentials" });
+    // }
+
+    if (!data) {
+      res.status(404).json({
+        message: "Data not added",
+      });
+    } else {
+      res.status(200).json({
+        message: "Data added",
+        data: data,
+      });
+    }
+  } catch (error) {
+    console.log("error===>", error);
+    res.send("something went wrong");
+  }
+};
+
 module.exports = {
   addData,
   getData,
   deleteData,
   patchData,
+  login,
 };
