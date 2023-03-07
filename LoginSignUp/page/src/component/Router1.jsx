@@ -9,6 +9,8 @@ import Home from "./Home";
 import Navbar from "./Navbar";
 import Logout from "./Logout";
 import PrivateComp from "./PrivateComp";
+import AddProduct from "./AddProduct";
+import ProductList from "./ProductList";
 
 const Router1 = () => {
   return (
@@ -20,7 +22,9 @@ const Router1 = () => {
           <Route exact path="/about" element={<About />} />
           <Route exact path="/contact" element={<Contact />} />
           <Route exact path="/blog" element={<Blog />} />
-          <Route exact path="/logout" element={<Logout />} />
+          <Route exact path="/addproduct" element={<AddProduct />} />
+          <Route exact path="/productlist" element={<ProductList />} />
+          <Route exact path="/logout" element={<Logout />} />   
         </Route>
         <Route exact path="/signup" element={<SignUp />} />
         <Route exact path="/login" element={<Login />} />

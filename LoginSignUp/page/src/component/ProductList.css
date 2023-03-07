@@ -1,0 +1,13 @@
+.prod-div{
+    text-align: center;
+    margin-top: 50px;
+}
+.prod-div ul li{
+    display: inline-block;
+    border: 2px solid red;
+    padding: 5px ;
+    width: 150px;
+}
+.prod-div ul{
+    margin: 0;
+}
