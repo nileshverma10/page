@@ -155,11 +155,43 @@ const getProduct = async (req, res) => {
       message: "Data fetched",
       data: data,
     });
+    // if (data.length > 0) {
+    //   res.send(data);
+    // } else {
+    //   console.log("Something went wrong");
+    // }
   } catch (error) {
     console.log("error===>", error);
     res.send("something went wrong");
   }
 };
+
+const deleteList = async (req, res) => {
+  try {
+    const data = await Product.findByIdAndDelete(req.params.id);
+    res.status(200).json({
+      message: "Data deleted",
+      data: data,
+    });
+  } catch (error) {
+    console.log("error===>", error);
+    res.send("something went wrong");
+  }
+};
+
+const getProductDetail = async (req, res) => {
+  try {
+    const data = await Product.findByIdAndUpdate(req.params.id);
+    res.status(200).json({
+      message: "Data Update",
+      data: data,
+    });
+  } catch (error) {
+    console.log("error===>", error);
+    res.send("something went wrong");
+  }
+};
+
 module.exports = {
   register,
   getData,
@@ -168,4 +200,6 @@ module.exports = {
   login,
   addProduct,
   getProduct,
+  deleteList,
+  getProductDetail,
 };

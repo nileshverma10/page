@@ -11,6 +11,7 @@ import Logout from "./Logout";
 import PrivateComp from "./PrivateComp";
 import AddProduct from "./AddProduct";
 import ProductList from "./ProductList";
+import Update from "./Update";
 
 const Router1 = () => {
   return (
@@ -24,7 +25,8 @@ const Router1 = () => {
           <Route exact path="/blog" element={<Blog />} />
           <Route exact path="/addproduct" element={<AddProduct />} />
           <Route exact path="/productlist" element={<ProductList />} />
-          <Route exact path="/logout" element={<Logout />} />   
+          <Route exact path="/update/:id" element={<Update />} />
+          <Route exact path="/logout" element={<Logout />} />
         </Route>
         <Route exact path="/signup" element={<SignUp />} />
         <Route exact path="/login" element={<Login />} />

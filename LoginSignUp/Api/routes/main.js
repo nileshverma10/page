@@ -9,5 +9,7 @@ router.patch("/patchData/:id", data.patchData);
 router.post("/login", data.login);
 router.post("/addProduct", data.addProduct);
 router.get("/getProduct", data.getProduct);
+router.delete("/deleteList/:id", data.deleteList);
+router.get("/getProductDetail", data.getProductDetail);
 
 module.exports = router;

@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 const Navbar = () => {
   const auth = localStorage.getItem("success");
   const userData = JSON.parse(auth);
-  console.log("zscsadasdsad", JSON.parse(auth));
+  // console.log("zscsadasdsad", JSON.parse(auth));
   const navigate = useNavigate();
   const logout = () => {
     localStorage.removeItem("success");
@@ -32,7 +32,10 @@ const Navbar = () => {
             <Link to="/addproduct"> AddProduct </Link>
           </li>
           <li>
-            <Link to="/productlist">Product list</Link>
+            <Link to="/productlist">Product List</Link>
+          </li>
+          <li>
+            <Link to="/update">Update List</Link>
           </li>
           <li>
             <Link onClick={logout} to="/signup">
