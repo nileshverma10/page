@@ -57,7 +57,7 @@ function SignUp() {
     console.log({ email, password, fname, lname, number, gender });
 
     axios
-      .post("http://localhost:5000/addData", {
+      .post("http://localhost:5000/register", {
         email: email,
         password: password,
         fname: fname,
@@ -89,27 +89,27 @@ function SignUp() {
         console.log(error);
       });
 
-    axios
-      .delete("http://localhost:5000/deleteData")
-      .then((result) => {
-        console.log(result.data);
-        // alert("success");
-      })
-      .catch((error) => {
-        // alert("service error");
-        console.log(error);
-      });
+    // axios
+    //   .delete("http://localhost:5000/deleteData")
+    //   .then((result) => {
+    //     console.log(result.data);
+    //     // alert("success");
+    //   })
+    //   .catch((error) => {
+    //     // alert("service error");
+    //     console.log(error);
+    //   });
 
-    axios
-      .patch("http://localhost:5000/patchData")
-      .then((result) => {
-        console.log(result.data);
-        // alert("success");
-      })
-      .catch((error) => {
-        // alert("service error");
-        console.log(error);
-      });
+    // axios
+    //   .patch("http://localhost:5000/patchData")
+    //   .then((result) => {
+    //     console.log(result.data);
+    //     // alert("success");
+    //   })
+    //   .catch((error) => {
+    //     // alert("service error");
+    //     console.log(error);
+    //   });
   };
 
   return (
