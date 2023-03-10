@@ -181,9 +181,9 @@ const deleteList = async (req, res) => {
 
 const getProductDetail = async (req, res) => {
   try {
-    const data = await Product.findByIdAndUpdate(req.params.id);
+    const data = await Product.findById(req.params.id);
     res.status(200).json({
-      message: "Data Update",
+      message: "Data Find",
       data: data,
     });
   } catch (error) {
@@ -192,6 +192,48 @@ const getProductDetail = async (req, res) => {
   }
 };
 
+// const updateProductDetail = async (req, res) => {
+//   try {
+//     const { id } = req.params.id;
+//     console.log("id=", id);
+//     const { name, model, price, company } = req.body;
+//     const data = await Product.findOne({ id: id });
+//     if (!data) {
+//       res.status(404).json({ message: "Product not found" });
+//     } else {
+//       const updateData = await Product.updateOne(
+//         { id: id },
+//         { $set: { name, model, price, company } }
+//       );
+//       console.log("update-ata--->", updateData);
+//       return res.status(200).json({
+//         msg: "data upated successfully",
+//         data: updateData,
+//       });
+//     }
+//   } catch (error) {
+//     console.log("error===>", error);
+//     res.send("something went wrong");
+//   }
+// };
+
+const updateProduct = async (req, res) => {
+  try {
+    const data = await Product.findByIdAndUpdate(
+      { _id: req.params.id },
+      {
+        $set: req.body,
+      }
+    );
+    const result = await Product.findById(req.params.id);
+    res.status(200).json({
+      message: "Product updated successfully",
+      result: result,
+    });
+  } catch (error) {
+    res.send("Something went wrong!!!!");
+  }
+};
 module.exports = {
   register,
   getData,
@@ -202,4 +244,6 @@ module.exports = {
   getProduct,
   deleteList,
   getProductDetail,
+  // updateProductDetail,
+  updateProduct,
 };

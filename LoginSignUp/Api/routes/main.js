@@ -10,6 +10,8 @@ router.post("/login", data.login);
 router.post("/addProduct", data.addProduct);
 router.get("/getProduct", data.getProduct);
 router.delete("/deleteList/:id", data.deleteList);
-router.get("/getProductDetail", data.getProductDetail);
+router.get("/getProductDetail/:id", data.getProductDetail);
+// router.put('/updateProduct/:id',data.updateProductDetail)
+router.put("/updateProduct/:id", data.updateProduct);
 
 module.exports = router;

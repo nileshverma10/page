@@ -1,15 +1,48 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 // import axios from "axios";
 import "./AddProduct.css";
+
 const Update = () => {
   const [name, setName] = useState("");
   const [model, setModel] = useState("");
   const [price, setPrice] = useState("");
   const [company, setCompany] = useState("");
-  //   const [error, setError] = useState(false);
+  const params = useParams();
+  const navigate = useNavigate();
 
-  const handleUpdate = () => {
+  useEffect(() => {
+    getProductAndUpdate();
+  }, []);
+
+  const getProductAndUpdate = async () => {
+    console.log(params);
+    let result = await fetch(
+      `http://localhost:5000/getProductDetail/${params.id}`
+    );
+    result = await result.json();
+    console.log(result);
+    setName(result.data.name);
+    setModel(result.data.model);
+    setPrice(result.data.price);
+    setCompany(result.data.company);
+  };
+
+  const handleUpdate = async () => {
     console.log(name, model, price, company);
+    let result = await fetch(
+      `http://localhost:5000/updateProduct/${params.id}`,
+      {
+        method: "put",
+        body: JSON.stringify({ name, model, price, company }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    result = await result.json();
+    console.log(result);
+    navigate("/productlist");
   };
   return (
     <div>
