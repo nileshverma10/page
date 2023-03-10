@@ -4,6 +4,8 @@ const router = require("./routes/main");
 const port = 5000;
 const bodyParser = require("body-parser");
 var cors = require("cors");
+const Jwt = require("jsonwebtoken");
+const jwtKey = "hawkeye";
 
 app.use(cors());
 app.use(bodyParser.json());

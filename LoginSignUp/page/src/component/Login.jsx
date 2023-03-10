@@ -24,6 +24,7 @@ const Login = () => {
         console.log(response.data);
         if (response.data) {
           localStorage.setItem("success", JSON.stringify(response.data));
+          // window.localStorage.removeItem("password");
           navigate("/");
         } else {
           alert("please enter correct detail");

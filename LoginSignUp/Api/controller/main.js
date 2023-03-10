@@ -1,6 +1,6 @@
 const detailsModel = require("../model/main");
 const Product = require("../model/AddProduct");
-
+const loginDetail = require("../model/login");
 const register = async (req, res) => {
   try {
     const { email, password, fname, lname, phone, gender } = req.body;
@@ -70,41 +70,14 @@ const patchData = async (req, res) => {
   }
 };
 
-// const login = async (req, res) => {
-//   try {
-//     const { email, password } = req.body;
-
-//     const data = new detailsModel({
-//       email: email,
-//       password: password,
-//     });
-//     await data.save();
-//   } catch (error) {
-//     console.log("error===>", error);
-//     res.send("something went wrong");
-//   }
-// };
-
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
-    const data = new detailsModel({
+    const data = new loginDetail({
       email: email,
       password: password,
     });
-
     await data.save();
-    // if (req.body.email && req.body.password) {
-    //   let user = await detailsModel.findOne(req.body).select("-password");
-    //   if (user) {
-    //     res.send(user);
-    //   } else {
-    //     res.status(401).json({ message: "Invalid Credentials" });
-    //   }
-    // } else {
-    //   res.status(401).json({ message: "Invalid Credentials" });
-    // }
-
     if (!data) {
       res.status(404).json({
         message: "Data not added",
@@ -191,31 +164,6 @@ const getProductDetail = async (req, res) => {
     res.send("something went wrong");
   }
 };
-
-// const updateProductDetail = async (req, res) => {
-//   try {
-//     const { id } = req.params.id;
-//     console.log("id=", id);
-//     const { name, model, price, company } = req.body;
-//     const data = await Product.findOne({ id: id });
-//     if (!data) {
-//       res.status(404).json({ message: "Product not found" });
-//     } else {
-//       const updateData = await Product.updateOne(
-//         { id: id },
-//         { $set: { name, model, price, company } }
-//       );
-//       console.log("update-ata--->", updateData);
-//       return res.status(200).json({
-//         msg: "data upated successfully",
-//         data: updateData,
-//       });
-//     }
-//   } catch (error) {
-//     console.log("error===>", error);
-//     res.send("something went wrong");
-//   }
-// };
 
 const updateProduct = async (req, res) => {
   try {
