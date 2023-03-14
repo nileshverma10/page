@@ -1,6 +1,10 @@
 const detailsModel = require("../model/main");
 const Product = require("../model/AddProduct");
 const loginDetail = require("../model/login");
+
+const Jwt = require("jsonwebtoken");
+const jwtKey = "hawkeye";
+
 const register = async (req, res) => {
   try {
     const { email, password, fname, lname, phone, gender } = req.body;
@@ -13,7 +17,17 @@ const register = async (req, res) => {
       phone: phone,
       gender: gender,
     });
-
+   
+    if (data) {
+      Jwt.sign({ data }, jwtKey, (err, token) => {
+        if (err) {
+          res.send("token error");
+        }
+        res.send({ data, auth: token });
+      });
+    } else {
+      res.send("something went wrong");
+    }
     await data.save();
     // data = data.toObject();
     // delete data.password;
@@ -22,7 +36,7 @@ const register = async (req, res) => {
         message: "Data not added",
       });
     } else {
-      res.status(200).json({
+      res.status(200).json({ 
         message: "Data added",
         data: data,
       });
@@ -70,14 +84,27 @@ const patchData = async (req, res) => {
   }
 };
 
-const login = async (req, res) => {
+const login =  async  (req, res) => {
   try {
     const { email, password } = req.body;
     const data = new loginDetail({
       email: email,
       password: password,
     });
+    
+    if (data) {
+      Jwt.sign({ data }, jwtKey, (err, token) => {
+        if (err) {
+          res.send("token error");
+        }
+        res.send({ data, auth: token });
+      });
+    } else {
+      res.send("something went wrong");
+    }
+    
     await data.save();
+
     if (!data) {
       res.status(404).json({
         message: "Data not added",
@@ -182,6 +209,8 @@ const updateProduct = async (req, res) => {
     res.send("Something went wrong!!!!");
   }
 };
+
+  
 module.exports = {
   register,
   getData,

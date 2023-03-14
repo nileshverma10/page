@@ -25,3 +25,4 @@ const detailsSchema = new mongoose.Schema(
 
 const detailsModel = mongoose.model("detail", detailsSchema);
 module.exports = detailsModel;
+ 

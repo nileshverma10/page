@@ -14,7 +14,11 @@ const ProductList = () => {
 
   const getList = () => {
     axios
-      .get("http://localhost:5000/getProduct")
+      .get("http://localhost:5000/getProduct",{
+        headers:{
+          authorization:JSON.parse(localStorage.getItem('token'))
+        }
+      })
       .then((result) => {
         console.log(result.data);
         // alert("success");

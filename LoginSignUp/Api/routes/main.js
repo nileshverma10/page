@@ -6,11 +6,19 @@ router.post('/register', data.register)
 router.get('/getData', data.getData)
 router.delete('/deleteData/:id', data.deleteData)
 router.patch('/patchData/:id', data.patchData)
-router.post('/login', data.login)
+router.post('/login',verifyToken, data.login)
 router.post('/addProduct', data.addProduct)
 router.get('/getProduct', data.getProduct)
 router.delete('/deleteList/:id', data.deleteList)
 router.get('/getProductDetail/:id', data.getProductDetail)
 router.put('/updateProduct/:id', data.updateProduct)
+
+
+
+
+function verifyToken (req,res,next){
+    console.log("middleware called")
+    next();
+}
 
 module.exports = router

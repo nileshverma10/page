@@ -68,8 +68,9 @@ function SignUp() {
       .then((result) => {
         console.log(result.data);
         alert("success");
-        if (result.data) {
-          localStorage.setItem("success", JSON.stringify(result.data));
+        if (result.data.auth) {
+          localStorage.setItem("success", JSON.stringify(result.data.data));
+          localStorage.setItem("token", JSON.stringify(result.data.auth));
           navigate("/");
         }
       })

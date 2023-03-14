@@ -4,8 +4,7 @@ const router = require("./routes/main");
 const port = 5000;
 const bodyParser = require("body-parser");
 var cors = require("cors");
-const Jwt = require("jsonwebtoken");
-const jwtKey = "hawkeye";
+
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -14,11 +13,11 @@ app.use(router);
 
 // mongoose config
 const mongoose = require("mongoose");
-mongoose.set("strictQuery", true);
+mongoose.set("strictQuery", false);
 mongoose
-  .connect("mongodb://localhost:27017/test", {
+  .connect("mongodb://0.0.0.0:27017/test", {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
+    useUnifiedTopology: true
   })
   .then(() => {
     console.log("connected to mongodb");
