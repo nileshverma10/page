@@ -1,4 +1,4 @@
-const detailsModel = require("../model/main");
+ const detailsModel = require("../model/main");
 const Product = require("../model/AddProduct");
 const loginDetail = require("../model/login");
 
@@ -93,17 +93,17 @@ const login =  async  (req, res) => {
     });
     
     if (data) {
-      Jwt.sign({ data }, jwtKey, (err, token) => {
+      await Jwt.sign({ data }, jwtKey, (err, token) => {
         if (err) {
           res.send("token error");
         }
-        res.send({ data, auth: token });
+        res.send({ data, auth: token }); 
       });
     } else {
       res.send("something went wrong");
     }
     
-    await data.save();
+     await data.save();
 
     if (!data) {
       res.status(404).json({
