@@ -36,7 +36,7 @@ const Login = () => {
         }
       })
       .catch((error) => {
-        console.log(error.message);
+        console.log(error.message  );
       });
      if(email===emailData && pass=== password){
       alert("Login Success")

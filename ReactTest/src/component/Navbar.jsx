@@ -19,9 +19,9 @@ const Navbar = () => {
           <li className="home">
             <Link to="/home">Home</Link>
           </li>
-
-          {/* <li>
-            <Link to="/dashboard">Dashboard</Link>
+{/* 
+          <li className="table">
+            <Link to="/table">Table</Link>
           </li> */}
           <li className="logout">
             <Link onClick={logout} to="/login">

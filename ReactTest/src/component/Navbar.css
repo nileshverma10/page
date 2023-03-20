@@ -21,6 +21,12 @@ a:-webkit-any-link {
     float: left;
     margin-left: 1600px;
 }
-.logout{
-    margin-top: 10px;
+.logout {
+    margin-top: -28px;
+    margin-right: 140px;
 }
+/* .table{
+    margin-top: 10px;
+    float: left;
+    margin-left: 1200px;
+} */
