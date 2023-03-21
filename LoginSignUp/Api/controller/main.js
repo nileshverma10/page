@@ -94,13 +94,14 @@ const login =  async  (req, res) => {
     
     if (data) {
       await Jwt.sign({ data }, jwtKey, (err, token) => {
-        if (err) {
-          res.send("token error");
-        }
-        res.send({ data, auth: token }); 
+        // if (err) {
+        //   res.send("token error");
+        // }
+        // return res.send({ data, auth: token });
+           
       });
     } else {
-      res.send("something went wrong");
+      // res.send("something went wrong");
     }
     
      await data.save();
