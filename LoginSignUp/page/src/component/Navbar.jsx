@@ -3,7 +3,7 @@ import "./Navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 const Navbar = () => {
   const auth = localStorage.getItem("success");
-  const userData = JSON.parse(auth);
+  // const userData = JSON.parse(auth);
   // console.log("zscsadasdsad", JSON.parse(auth));
   const navigate = useNavigate();
   const logout = () => {

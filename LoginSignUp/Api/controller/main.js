@@ -2,8 +2,8 @@
 const Product = require("../model/AddProduct");
 const loginDetail = require("../model/login");
 
-const Jwt = require("jsonwebtoken");
-const jwtKey = "hawkeye";
+// const Jwt = require("jsonwebtoken");
+// const jwtKey = "hawkeye";
 
 const register = async (req, res) => {
   try {
@@ -18,16 +18,16 @@ const register = async (req, res) => {
       gender: gender,
     });
    
-    if (data) {
-      Jwt.sign({ data }, jwtKey, (err, token) => {
-        if (err) {
-          res.send("token error");
-        }
-        res.send({ data, auth: token });
-      });
-    } else {
-      res.send("something went wrong");
-    }
+    // if (data) {
+    //   Jwt.sign({ data }, jwtKey, (err, token) => {
+    //     if (err) {
+    //       res.send("token error");
+    //     }
+    //     res.send({ data, auth: token });
+    //   });
+    // } else {
+    //   res.send("something went wrong");
+    // }
     await data.save();
     // data = data.toObject();
     // delete data.password;
@@ -92,17 +92,17 @@ const login =  async  (req, res) => {
       password: password,
     });
     
-    if (data) {
-      await Jwt.sign({ data }, jwtKey, (err, token) => {
-        // if (err) {
-        //   res.send("token error");
-        // }
-        // return res.send({ data, auth: token });
+    // if (data) {
+    //   await Jwt.sign({ data }, jwtKey, (err, token) => {
+    //     if (err) {
+    //       res.send("token error");
+    //     }
+    //     return res.send({ data, auth: token });
            
-      });
-    } else {
-      // res.send("something went wrong");
-    }
+    //   });
+    // } else {
+    //   res.send("something went wrong");
+    // }
     
      await data.save();
 
