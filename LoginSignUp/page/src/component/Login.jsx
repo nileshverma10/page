@@ -22,9 +22,9 @@ const Login = () => {
       })
       .then((response) => {
         console.log(response.data);
-        if (response.data) {
-          localStorage.setItem("success", JSON.stringify(response.data));
-          // localStorage.setItem("token", JSON.stringify(response.data.auth));
+        if (response.data.auth) {
+          localStorage.setItem("success", JSON.stringify(response.data.data));
+          localStorage.setItem("token", JSON.stringify(response.data.auth));
           // window.localStorage.removeItem("password");
           navigate("/");
         } else {

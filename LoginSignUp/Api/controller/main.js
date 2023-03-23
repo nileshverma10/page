@@ -2,8 +2,8 @@
 const Product = require("../model/AddProduct");
 const loginDetail = require("../model/login");
 
-// const Jwt = require("jsonwebtoken");
-// const jwtKey = "hawkeye";
+const Jwt = require("jsonwebtoken");
+const jwtKey = "hawkeye";
 
 const register = async (req, res) => {
   try {
@@ -92,30 +92,30 @@ const login =  async  (req, res) => {
       password: password,
     });
     
-    // if (data) {
-    //   await Jwt.sign({ data }, jwtKey, (err, token) => {
-    //     if (err) {
-    //       res.send("token error");
-    //     }
-    //     return res.send({ data, auth: token });
+    if (data) {
+      await Jwt.sign({ data }, jwtKey, (err, token) => {
+        if (err) {
+          res.send("token error");
+        }
+        return res.send({ data, auth: token });
            
-    //   });
-    // } else {
-    //   res.send("something went wrong");
-    // }
+      });
+    } else {
+      res.send("something went wrong");
+    }
     
      await data.save();
 
-    if (!data) {
-      res.status(404).json({
-        message: "Data not added",
-      });
-    } else {
-      res.status(200).json({
-        message: "Data added",
-        data: data,
-      });
-    }
+  //   if (!data) {
+  //     res.status(404).json({
+  //       message: "Data not added",
+  //     });
+  //   } else {
+  //     res.status(200).json({
+  //       message: "Data added",
+  //       data: data,
+  //     });
+  //   }
   } catch (error) {
     console.log("error===>", error);
     res.send("something went wrong");
